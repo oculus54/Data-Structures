@@ -29,7 +29,7 @@ void insertEleL(int data){
          /*as at first the list is empty the if will be true
          and that's why we have to save the head as first node's address*/
         head = newNode;
-        tail = newNode;
+        //tail = newNode;
         //also as for empty list the first element will also be the first node(newNode) (optional)
     }
     else //if list not empty
