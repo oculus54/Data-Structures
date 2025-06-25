@@ -7,20 +7,18 @@ typedef struct Node {
 } Node;
 
 Node *head = NULL; // pointer to node to save the address of the first node 
-
+Node *tail = NULL;
 void insertEleb(int); /*to insert element at the beginning and void type,
  as it will return nothing and integer argument to pass the value*/ 
 Node *getNode(int); //function which return a pointer to node to the insertEleb function
 void display();
-void delete(Node *);
+void deleteEnd();
 
 int main()
 {
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
-    display();
-    delete(head);
-    head = NULL;
+    deleteEnd();
     display();
     return 0;
 }
@@ -46,22 +44,20 @@ Node *getNode(int data){
 void display()
 {
     Node *temp = head;//creates a pointer to node to store the address of head
-    if(!head)
-        printf("List Is empty");
-    else{
+
     while(temp){  //untill it reaches to null means the end of the linked list
         printf("%d ",temp->data); //print the current nodes data
 
         temp = temp->next;//shift the pointer to next node address
-        }
     }
 }
 
-	void delete(Node *node)
+void deleteEnd()
 {
-    if (node == NULL)
-        return;
-
-    delete(node->next); // recursive call to delete next node
-    free(node); // free current node
+    Node *temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next; //points 2nd last
+    }
+    free(tail);//frees last element
+    temp->next = NULL; //sets the end of the node
 }

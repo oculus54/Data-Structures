@@ -7,20 +7,19 @@ typedef struct Node {
 } Node;
 
 Node *head = NULL; // pointer to node to save the address of the first node 
-
+Node *tail = NULL;
+int nodeCount =0;
 void insertEleb(int); /*to insert element at the beginning and void type,
  as it will return nothing and integer argument to pass the value*/ 
 Node *getNode(int); //function which return a pointer to node to the insertEleb function
 void display();
-void delete(Node *);
-
+void deletefront();
+void deleteEnd();
+void deleteAny(int,int);
 int main()
 {
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
-    display();
-    delete(head);
-    head = NULL;
     display();
     return 0;
 }
@@ -30,7 +29,7 @@ void insertEleb(int data){
 
     newNode->next = head; //this shifts the first node to the 2nd first node means i
     head = newNode; //now the head will point at the new node that is added
-
+    nodeCount++;
 
 }
 
@@ -46,22 +45,50 @@ Node *getNode(int data){
 void display()
 {
     Node *temp = head;//creates a pointer to node to store the address of head
-    if(!head)
-        printf("List Is empty");
-    else{
+
     while(temp){  //untill it reaches to null means the end of the linked list
         printf("%d ",temp->data); //print the current nodes data
 
         temp = temp->next;//shift the pointer to next node address
-        }
     }
 }
 
-	void delete(Node *node)
+void deletefront()
 {
-    if (node == NULL)
-        return;
+    Node *temp = head;
+    head = head->next;
+    free(temp);
+    nodeCount--;
+}
 
-    delete(node->next); // recursive call to delete next node
-    free(node); // free current node
+void deleteEnd()
+{
+    Node *temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next; //points 2nd last
+    }
+    free(tail);//frees last element
+    temp->next = NULL; //sets the end of the node
+    nodeCount--;
+}
+
+void deleteAny(int pos,int num){
+    if(pos<0 && pos > nodeCount){
+        printf("out of bound");
+        return;
+    }
+    else {
+        if(pos == 0){
+            deletefront();
+        }
+        else if(pos == nodeCount){
+            deleteEnd();
+        }
+        else {
+            Node *temp = head;
+            for(int i=1;i<pos;i++)
+                temp = temp->next;
+            //to be continued
+        }
+    }
 }
