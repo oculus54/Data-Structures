@@ -23,8 +23,10 @@ int main()
 }
 
 void insertEleL(int data){
-    Node *newNode = getNode(data); //returns a pointer to node by allocating in heap
-
+    Node *newNode = malloc(sizeof(Node)); //returns a pointer to node by allocating in heap
+    newNode->data = data;
+    newNode->next = NULL;
+    
     if(!head){
          /*as at first the list is empty the if will be true
          and that's why we have to save the head as first node's address*/

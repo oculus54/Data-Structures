@@ -88,7 +88,8 @@ void deleteAny(int pos,int num){
             Node *temp = head;
             for(int i=1;i<pos;i++)
                 temp = temp->next;
-            //to be continued
+             
+            
         }
     }
 }
