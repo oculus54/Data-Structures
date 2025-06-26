@@ -15,12 +15,13 @@ Node *getNode(int); //function which return a pointer to node to the insertEleb 
 void display();
 void deletefront();
 void deleteEnd();
-void deleteAny(int,int);
+void deleteAny(int);
 int main()
 {
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
-    display();
+    deleteAny(5);
+        display();
     return 0;
 }
 
@@ -72,13 +73,13 @@ void deleteEnd()
     nodeCount--;
 }
 
-void deleteAny(int pos,int num){
+void deleteAny(int pos){
     if(pos<0 && pos > nodeCount){
         printf("out of bound");
         return;
     }
     else {
-        if(pos == 0){
+        if(pos == 1){
             deletefront();
         }
         else if(pos == nodeCount){
@@ -86,8 +87,14 @@ void deleteAny(int pos,int num){
         }
         else {
             Node *temp = head;
-            for(int i=1;i<pos;i++)
+            for(int i=0;i<pos-1;i++)
                 temp = temp->next;
+            Node *temp2 = head;
+            for(int i=0;i<pos-2;i++)
+                temp2 = temp2->next;
+            temp2->next = temp->next;
+            free(temp);
+            
              
             
         }
