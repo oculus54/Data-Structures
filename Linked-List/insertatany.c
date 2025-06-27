@@ -12,7 +12,7 @@ int nodeCount =0;
 
 void insertatbeg(int);
 void insertatlast(int);
-void insertatany(int,int);
+void insertatany(int,int);//if the index is from 1 
 void display();
 
 int main()
@@ -21,7 +21,7 @@ int main()
         insertatbeg(i);
     }
     printf("%d\n",nodeCount);
-    insertatany(4,54);
+    insertatany(1,54); //if index is starting from 0
       printf("%d\n",nodeCount);
     display();
 }
@@ -85,7 +85,7 @@ void insertatany(int pos,int num){
             insertatlast(num);
         }
         else {
-            Node *newNode = malloc(sizeof(Node));
+            Node *newNode = malloc(sizeof(Node));//must create a get node function 
             newNode->data = num;
             newNode->next = NULL;
             Node *temp = head;
