@@ -20,7 +20,7 @@ int main()
 {
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
-    deleteAny(5);
+    deleteAny(2);
         display();
     return 0;
 }
@@ -74,27 +74,25 @@ void deleteEnd()
 }
 
 void deleteAny(int pos){
-    if(pos<0 && pos > nodeCount){
+    if(pos<0 && pos >= nodeCount){
         printf("out of bound");
         return;
     }
     else {
-        if(pos == 1){
+        if(pos == 0){
             deletefront();
         }
-        else if(pos == nodeCount){
+        else if(pos == nodeCount-1){
             deleteEnd();
         }
         else {
-            Node *temp = head;
-            for(int i=0;i<pos-1;i++)
-                temp = temp->next;
-            Node *temp2 = head;
-            for(int i=0;i<pos-2;i++)
-                temp2 = temp2->next;
-            temp2->next = temp->next;
-            free(temp);
-            
+          Node *temp = head;
+          for(int i =0;i<pos-1;i++)
+            temp = temp->next;
+
+        Node *toDelete = temp->next;
+        temp->next = toDelete->next;
+        free(toDelete);
              
             
         }
