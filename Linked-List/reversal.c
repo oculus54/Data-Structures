@@ -65,4 +65,5 @@ void display()
 
         temp = temp->next;//shift the pointer to next node address
     }
+    printf("\n");
 }
