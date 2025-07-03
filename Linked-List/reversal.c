@@ -31,10 +31,10 @@ void reversal()
     
     while(current != NULL)
     {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
+        next = current->next; //setting next pointer to current's next node
+        current->next = prev; //set the current nodes next node to previous means reversing pointers
+        prev = current; //saves the previous node and it would need in next loop 
+        current = next; //iterate to next node
     }
     head = prev;
 }
@@ -65,4 +65,5 @@ void display()
 
         temp = temp->next;//shift the pointer to next node address
     }
+    printf("\n");
 }
