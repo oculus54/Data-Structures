@@ -44,6 +44,10 @@ void pop()
 
 void peek()
 {
+    if(!head){
+        printf("Stack Underflow");
+        return;
+    }
     printf("%d ",head->data);
 }
 
