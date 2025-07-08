@@ -38,16 +38,16 @@ class LinkedList {
             this->head = newNode;
             this->tail = newNode;
         }
-        void insertAtEnd(int data){
-            Node *newNode = new Node(data);
-            if(!head){
-                head = newNode;
-            }
-            else {
-                tail->next = newNode;
-            }
-            tail = newNode;
-        }
+        // void insertAtEnd(int data){
+        //     Node *newNode = new Node(data);
+        //     if(!head){
+        //         head = newNode;
+        //     }
+        //     else {
+        //         tail->next = newNode;
+        //     }
+        //     tail = newNode;
+        // }
         void print(){
             Node *temp = head;
             if(!head){
@@ -64,8 +64,8 @@ class LinkedList {
 int main()
 {
     LinkedList list;
-    for(int i=1;i<=5;i++)
-        list.insertAtEnd(i);
+    // for(int i=1;i<=5;i++)
+    //     list.insertAtBeg(i);
     list.print();
     return 0;
 }
