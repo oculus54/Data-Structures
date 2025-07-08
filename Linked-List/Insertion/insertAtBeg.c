@@ -7,7 +7,7 @@ typedef struct Node {
 } Node;
 
 Node *head = NULL; // pointer to node to save the address of the first node 
-
+Node *tail = NULL;
 void insertEleb(int); /*to insert element at the beginning and void type,
  as it will return nothing and integer argument to pass the value*/ 
 Node *getNode(int); //function which return a pointer to node to the insertEleb function
@@ -18,14 +18,19 @@ int main()
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
     display();
+    printf("%d",tail->data);
     return 0;
 }
 
 void insertEleb(int data){
     Node *newNode = getNode(data); //returns a pointer to node by allocating in heap
-
-    newNode->next = head; //this shifts the first node to the 2nd first node means i
-    head = newNode; //now the head will point at the new node that is added
+    if(!head){
+        head = tail= newNode;//edge cases for setting head
+    }
+    else{
+        newNode->next = head; //this shifts the first node to the 2nd first node means i
+        head = newNode; //now the head will point at the new node that is added
+    }
 
 
 }
