@@ -1,71 +1,78 @@
 #include <iostream>
 using namespace std;
-//object oriented approach
 
-class Node { //this is for creating node inside a linked list object
-    public:
-        int data;
-        Node *next;
-    
-    Node(){ //default constructor
-        data =0;
+// Node class
+class Node {
+public:
+    int data;
+    Node *next;
+
+    Node() {
+        data = 0;
         next = NULL;
     }
 
-    Node(int data){ //with parameter
+    Node(int data) {
         this->data = data;
         this->next = NULL;
     }
 };
 
+// LinkedList class
 class LinkedList {
-    Node *head; //pointer to node
+    Node *head;
     Node *tail;
 
-    public:
-        LinkedList() { //default constructor
-            head = NULL;
-            tail = NULL;
+public:
+    LinkedList() {
+        head = NULL;
+        tail = NULL;
+    }
+
+    void insertAtBeg(int data) {
+        Node *newNode = new Node(data);
+        if (!head) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode->next = head;
+            head = newNode;
         }
-        void insertAtBeg(int data){
-            Node *newNode = new Node(data); //new is like malloc
-            if(!head){
-                head = newNode;
-                tail = newNode;
-                return;
-            }
-            newNode->next = this->head;
-            this->head = newNode;
-            this->tail = newNode;
+    }
+
+    void insertAtEnd(int data) {
+        Node *newNode = new Node(data);
+        if (!head) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = newNode;
         }
-        // void insertAtEnd(int data){
-        //     Node *newNode = new Node(data);
-        //     if(!head){
-        //         head = newNode;
-        //     }
-        //     else {
-        //         tail->next = newNode;
-        //     }
-        //     tail = newNode;
-        // }
-        void print(){
-            Node *temp = head;
-            if(!head){
-                cout<<"list empty"<<endl;
-                return;
-            }
-            while(temp){
-                cout<<temp->data<<" ";
-                temp = temp->next;
-            }
+    }
+
+    void print() {
+        Node *temp = head;
+        if (!head) {
+            cout << "list empty" << endl;
+            return;
         }
+        while (temp) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
 };
 
-int main()
-{
+// Main
+int main() {
     LinkedList list;
-    // for(int i=1;i<=5;i++)
-    //     list.insertAtBeg(i);
+
+    for (int i = 1; i <= 5; i++)
+        list.insertAtBeg(i);
+list.insertAtEnd(1);
     list.print();
+
     return 0;
 }
