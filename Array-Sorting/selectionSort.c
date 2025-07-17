@@ -17,7 +17,9 @@ int main()
 {
     int arr[5] = {2,6,7,14,1};
     selectionSort(arr,5);
-    for(int i=0;i<5;i++)
+    int i=0;
+    for(i=1;i<=2-1;i++)
         printf("%d ",arr[i]);
+        printf("\n%d",i);
         return 0;
 }
