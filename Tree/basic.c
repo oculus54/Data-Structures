@@ -26,8 +26,17 @@ int main()
 
 void insert(Node **root,int data){
     if(*root == NULL){
-        Node *newNode = malloc(sizeof(Node));
+        *root = createNode(data);
         return;
+    }
+    if ((*root)->left == NULL) {
+        insert(&((*root)->left), data);
+    }
+    elseif((*root)->right == NULL){
+        insert(&((*root)->right), data);
+    }
+    else {
+        insert(&((*root)->left),data);
     }
     
 
