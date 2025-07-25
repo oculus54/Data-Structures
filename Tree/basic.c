@@ -11,14 +11,27 @@ Node *createNode(int);
 void insertLeft(Node*,int);
 void insertRight(Node*,int);
 void inOrderTraversal(Node*);
-
+void insert(Node **,int);
 int main()
 {
     Node *root = createNode(1);
-    inser
+    insertLeft(root,2);
+    insertRight(root,3);
+    insertLeft(root->left,4);
+    insertRight(root->left,5);
+    inOrderTraversal(root);
+    return 0;
 
 }
 
+void insert(Node **root,int data){
+    if(*root == NULL){
+        Node *newNode = malloc(sizeof(Node));
+        return;
+    }
+    
+
+}
 Node *createNode(int data){
     Node *newNode = malloc(sizeof(Node));
 
@@ -48,7 +61,7 @@ void insertRight(Node *root,int data){
 void inOrderTraversal(Node *root){
     if(root != NULL){
         inOrderTraversal(root->left);
-        printf("%d",root->data);
+        printf("%d ",root->data);
         inOrderTraversal(root->right);
     }
 
