@@ -15,10 +15,9 @@ void insert(Node **,int);
 int main()
 {
     Node *root = createNode(1);
-    insertLeft(root,2);
-    insertRight(root,3);
-    insertLeft(root->left,4);
-    insertRight(root->left,5);
+    insert(&root,2);
+    insert(&root,3);
+    insert(&root,4);    
     inOrderTraversal(root);
     return 0;
 
@@ -32,7 +31,7 @@ void insert(Node **root,int data){
     if ((*root)->left == NULL) {
         insert(&((*root)->left), data);
     }
-    elseif((*root)->right == NULL){
+    else if((*root)->right == NULL){
         insert(&((*root)->right), data);
     }
     else {
