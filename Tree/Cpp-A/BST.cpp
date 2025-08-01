@@ -10,7 +10,7 @@ class Node
         this->data = data;
     }
 };
-//fsfbbjf
+//fsfbbjfj
 class BST {
     Node *root = nullptr;
 
