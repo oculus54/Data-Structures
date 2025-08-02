@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class Node 
@@ -10,7 +11,7 @@ class Node
         this->data = data;
     }
 };
-//fsfbbjfj
+
 class BST {
     Node *root = nullptr;
 
@@ -40,6 +41,24 @@ class BST {
         cout<<root->data<<" ";
         inOrderTraversal(root->right);}
     }
+
+    void levelOrderTraversal(Node *&root){
+        if(!root)
+            return;
+        queue<Node *> q;
+
+        q.push(root);
+        while(!q.empty()){
+            Node *current = q.front();
+            q.pop();
+
+            cout<<current->data<<" ";
+            if(current->left != nullptr)
+                q.push(current->left);
+            if(current->right != nullptr)
+                q.push(current->right);
+        }
+    }
     public:
         void insert(int data){
             insertNode(root,data);
@@ -54,6 +73,10 @@ class BST {
         void inOrder(){
             inOrderTraversal(root);
         }
+        void levelOrder()
+        {
+            levelOrderTraversal(root);
+        }
     
 };
 
@@ -65,6 +88,7 @@ int main()
     b1.insert(3);
     b1.insert(9);
     b1.search(10);
-    b1.inOrder();
+    b1.levelOrder();
+    
     return 0;
 }
