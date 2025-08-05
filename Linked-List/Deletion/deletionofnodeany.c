@@ -64,12 +64,12 @@ void deletefront()
 
 void deleteEnd()
 {
-    Node *temp = head;
-    while(temp->next->next != NULL){
-        temp = temp->next; //points 2nd last
-    }
-    free(tail);//frees last element
-    temp->next = NULL; //sets the end of the node
+  Node *temp = head;
+    while(temp->next->next != NULL)
+        temp = temp->next;
+    free(tail);
+    tail = temp;
+    tail->next = NULL;
     nodeCount--;
 }
 

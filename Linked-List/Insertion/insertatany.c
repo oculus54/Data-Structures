@@ -55,7 +55,6 @@ void insertatlast(int data){
         tail->next =newNode; // the previous tail next pointer will point to the newly created node
     tail = newNode; //the tail pointer will point the newly added element means it will be at the last
     ++nodeCount;
-
 }
 void display(){
     if(!head)
@@ -70,21 +69,20 @@ void display(){
 }
 
 void insertatany(int pos,int num){
-    if(pos<0 || pos > nodeCount)
-    {
+    if(pos<0 || pos > nodeCount){
         printf("Invalid index");
         return;
     }
     else {
         if(pos==0){
-            insertatbeg(num);
-            
+            insertatbeg(num);    
         }
         else if(pos==nodeCount)
         {
             insertatlast(num);
         }
-        else {
+        else 
+        {
             Node *newNode = malloc(sizeof(Node));//must create a get node function 
             newNode->data = num;
             newNode->next = NULL;

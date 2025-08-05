@@ -22,11 +22,13 @@ public:
 class LinkedList {
     Node *head;
     Node *tail;
+    int count;
 
 public:
     LinkedList() {
         head = NULL;
         tail = NULL;
+        count =0;
     }
 
     void insertAtBeg(int data) {
@@ -38,6 +40,7 @@ public:
             newNode->next = head;
             head = newNode;
         }
+        count++;
     }
 
     void insertAtEnd(int data) {
@@ -49,8 +52,33 @@ public:
             tail->next = newNode;
             tail = newNode;
         }
+        count++;
     }
-
+    
+    void insertAtAny(int data,int pos){
+        if(pos<0 || pos>count){
+            cout<<"out of bound";
+            return;
+        }
+        else {
+        if(pos == 0)
+            insertAtBeg(data);
+        else if(pos==count)
+            insertAtEnd(data);
+        else {
+        Node *newNode = new Node(data);
+        Node *temp = head;
+        for(int i=0;i<pos-1;i++)
+            temp = temp->next;
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
+    }
+    }
+    void countfs()
+    {
+        cout<<count;
+    }
     void print() {
         Node *temp = head;
         if (!head) {
@@ -72,7 +100,9 @@ int main() {
     for (int i = 1; i <= 5; i++)
         list.insertAtBeg(i);
 list.insertAtEnd(1);
-    list.print();
+
+list.insertAtAny(56,1);
+list.print();
 
     return 0;
 }

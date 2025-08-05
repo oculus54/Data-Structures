@@ -15,6 +15,7 @@ class Node
 class BST {
     Node *root = nullptr;
 
+    private:
     void insertNode(Node *&root, int data){ //instead of pointer to pointer we use the reference variable then we dont need to dereference that
         if(root == nullptr)
             root = new Node(data); //needed for recursive process
@@ -42,7 +43,7 @@ class BST {
         inOrderTraversal(root->right);}
     }
 
-    void levelOrderTraversal(Node *&root){
+    void levelOrderTraversal(Node *root){
         if(!root)
             return;
         queue<Node *> q;
@@ -59,6 +60,15 @@ class BST {
                 q.push(current->right);
         }
     }
+        int treeHeight(Node *root){
+            if(!root)
+                return -1;
+            int leftN = treeHeight(root->left);
+            int rightN = treeHeight(root->right);
+
+            return max(leftN,rightN) + 1;
+        }
+    
     public:
         void insert(int data){
             insertNode(root,data);
@@ -67,8 +77,7 @@ class BST {
             if(searchNode(root,data))
                 printf("Yes");
             else 
-                printf("No");
-            
+                printf("No");   
         }
         void inOrder(){
             inOrderTraversal(root);
@@ -76,6 +85,10 @@ class BST {
         void levelOrder()
         {
             levelOrderTraversal(root);
+        }
+        void height()
+        {
+            cout<<"Tree height"<<treeHeight(root);
         }
     
 };
@@ -87,8 +100,11 @@ int main()
     b1.insert(2);
     b1.insert(3);
     b1.insert(9);
+    b1.insert(5);
+    b1.insert(7);
     b1.search(10);
     b1.levelOrder();
+    b1.height();
     
     return 0;
 }
