@@ -16,15 +16,26 @@ void display();
 void deletefront();
 void deleteEnd();
 void deleteAny(int);
+void deleteElement(int);
+void revTraversal(Node *);
 int main()
 {
     for(int i=1;i<=5;i++)
         insertEleb(i); //insert elements
     deleteAny(2);
-        display();
+    insertEleb(7);
+    display();
+    printf("\n");
+    revTraversal(head);
     return 0;
 }
 
+void revTraversal(Node *temp){
+    if(!temp)
+        return;
+    revTraversal(temp->next);
+    printf("%d ",temp->data);
+}
 void insertEleb(int data){
     Node *newNode = getNode(data); //returns a pointer to node by allocating in heap
 
@@ -97,4 +108,21 @@ void deleteAny(int pos){
             
         }
     }
+}
+
+void deleteElement(int data){
+
+    if(data == head->data)
+        deletefront();
+    else if(data == tail->data)
+        deleteEnd();
+    else{
+    Node *temp = head;
+    while(temp->next->data!=data)
+        temp = temp->next;
+    Node *todel =temp->next;
+    temp->next = todel->next;
+    free(todel);
+    }
+
 }
