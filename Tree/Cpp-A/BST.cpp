@@ -26,7 +26,7 @@ class BST {
 
     }
 
-    bool searchNode(Node *&root, int data){
+    bool searchN    ode(Node *&root, int data){
         if(root==nullptr)
             return false;
         if(root->data == data)
