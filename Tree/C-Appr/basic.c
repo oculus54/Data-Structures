@@ -50,22 +50,6 @@ Node *createNode(int data){
     return newNode;
 }
 
-void insertLeft(Node* root,int data){
-    if(root == NULL){
-        printf("Parent is NULL");
-        return;
-    }
-    root->left = createNode(data);
-}
-
-void insertRight(Node *root,int data){
-    if(root == NULL){
-        printf("Parent is NULL");
-        return;
-    }
-    root->right = createNode(data);
-}
-
 void inOrderTraversal(Node *root){
     if(root != NULL){
         inOrderTraversal(root->left);
