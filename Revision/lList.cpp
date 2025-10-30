@@ -67,6 +67,12 @@ class LinkedList {
                 temp = temp->next;
             }
         }
+        void reversal(){
+            Node* curr = head,next,prev;
+            while(curr!=nullptr){
+                
+            }
+        }
 };
 
 int main()
